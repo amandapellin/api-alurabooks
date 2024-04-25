@@ -4,7 +4,7 @@ const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 
 const server = jsonServer.create()
-const router = jsonServer.router('./database.json')
+const router = jsonServer.router('./db.json')
 let userdb = JSON.parse(fs.readFileSync('./usuarios.json', 'UTF-8'))
 
 server.use(bodyParser.urlencoded({ extended: true }))
@@ -358,6 +358,6 @@ server.use(/^(?!\/(public|livros|autores|categorias)).*$/, (req, res, next) => {
 
 server.use(router)
 
-server.listen(8000, () => {
-  console.log("API disponível em http://localhost:8000")
+server.listen(3000, () => {
+  console.log("API disponível em http://localhost:3000")
 })
