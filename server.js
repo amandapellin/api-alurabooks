@@ -356,6 +356,17 @@ server.use(/^(?!\/(public|livros|autores|categorias)).*$/, (req, res, next) => {
     res.status(status).json({ status, message })
   }
 })
+server.get('/public/docs', (req, res) => {
+  const meuHtml = `
+     <h1>Documentação da API</h1>
+     <ul>
+            <li>GET /livros</li>
+            <li>POST /livros</li>
+            <li>GET /categorias</li>
+     </ul>
+    `
+    res.status(200).contentType("text/html").send(meuHtml)
+})
 
 server.use(router)
 https.createServer(
